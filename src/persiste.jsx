@@ -1,7 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-// import experienceReducer from './features/experience/experienceSlice';
-// import experienceReducer from './components/actionslice'
-import appReducer from './appSlice'; // adjust path if needed
+import appReducer from './appSlice'; 
 
 import {persistStore,persistReducer,FLUSH,REHYDRATE,PAUSE,PERSIST,PURGE,REGISTER,} from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; 
