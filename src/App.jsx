@@ -19,9 +19,12 @@ import DailyPlanTimeline from './components/userhomeiner/DailyPlanTimeline'
 import DashboardOverview from './components/userhomeiner/DashboardOverview'
 import ProgressAnalyticsDashboard from './components/userhomeiner/ProgressAnalyticsDashboard'
 import SyllabusManager from './components/userhomeiner/SyllabusManager'
-import AIMentorInteractionHub from './components/userhomeiner/AIMentorInteractionHub'
 import GoogleAuth from "./components/auth/GoogleAuth";
 
+import SyllabusDetailPage from './components/userhomeiner/SyllabusDetailPage'
+
+
+import Textbooks from './components/sample'
 function App() {
   return (
     <Routes>
@@ -37,6 +40,8 @@ function App() {
 
 
 
+      <Route path='/Textbooks' element={<Textbooks/>}/>
+
 
 
 
@@ -46,9 +51,12 @@ function App() {
       <Route path='/DailyPlanTimeline' element={<DailyPlanTimeline/>}/>
       <Route path='/DashboardOverview' element={<DashboardOverview/>}/>
       <Route path='/ProgressAnalyticsDashboard' element={<ProgressAnalyticsDashboard/>}/>
+
+
       <Route path='/SyllabusManager' element={<SyllabusManager/>}/>
-      <Route path='/AIMentorInteractionHub' element={<AIMentorInteractionHub/>}/>  
+      <Route path='/SyllabusDetailPage' element={<SyllabusDetailPage/>}/>
     </Routes>
+    
   );
 }
 
