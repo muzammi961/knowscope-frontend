@@ -1,248 +1,171 @@
-// SyllabusManager.jsx
 import React from 'react';
-import SmartLearnAINavbar from './navbarside/SmartLearnAINavbar'
+import SmartLearnAINavbar from './navbarside/SmartLearnAINavbar';
+
 const SyllabusManager = () => {
+const subjects = [
+  {
+    id: 'english',
+    name: 'English',
+    description: 'Literature & Language',
+    progress: 75,
+    icon: (
+      <svg className="mb-6" fill="none" height="32" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+      </svg>
+    )
+  },
+  {
+    id: 'malayalam',
+    name: 'Malayalam',
+    description: 'Regional Language',
+    progress: 40,
+    icon: (
+      <svg className="mb-6" fill="none" height="32" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+        <path d="m5 8 6 6"></path>
+        <path d="m4 14 6-6 2-3"></path>
+        <path d="M2 5h12"></path>
+        <path d="M7 2h1"></path>
+        <path d="m22 22-5-10-5 10"></path>
+        <path d="M14 18h6"></path>
+      </svg>
+    )
+  },
+  {
+    id: 'chemistry',
+    name: 'Chemistry',
+    description: 'Molecules & Reactions',
+    progress: 65,
+    icon: (
+      <svg className="mb-6" fill="none" height="32" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 2v8L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45L14 10V2"></path>
+        <path d="M8.5 2h7"></path>
+        <path d="M7 16h10"></path>
+      </svg>
+    )
+  },
+  {
+    id: 'physics',
+    name: 'Physics',
+    description: 'Forces & Energy',
+    progress: 32,
+    icon: (
+      <svg className="mb-6" fill="none" height="32" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="1"></circle>
+        <path d="M15.93 11.01c.73.84.73 2.14 0 2.98l-7.86 9.01c-.73.84-1.91.84-2.64 0a1.72 1.72 0 0 1 0-2.48l7.86-9.01c.73-.84 1.91-.84 2.64 0Z"></path>
+        <path d="M8.07 11.01c-.73.84-.73 2.14 0 2.98l7.86 9.01c.73.84 1.91.84 2.64 0a1.72 1.72 0 0 0 0-2.48l-7.86-9.01c-.73-.84-1.91-.84-2.64 0Z"></path>
+        <path d="M11 8.07c.84-.73 2.14-.73 2.98 0l9.01 7.86c.84.73.84 1.91 0 2.64a1.72 1.72 0 0 1-2.48 0l-9.01-7.86c-.84-.73-.84-1.91 0-2.64Z"></path>
+      </svg>
+    )
+  },
+  {
+    id: 'biology',
+    name: 'Biology',
+    description: 'Life & Organisms',
+    progress: 90,
+    icon: (
+      <svg className="mb-6" fill="none" height="32" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 18h8"></path>
+        <path d="M3 22h18"></path>
+        <path d="M14 22a7 7 0 1 0 0-14h-1"></path>
+        <path d="M9 14h2"></path>
+        <path d="M9 12a2 2 0 1 1-2-2V6h6v4a2 2 0 1 1-2 2Z"></path>
+        <path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"></path>
+      </svg>
+    )
+  },
+  {
+    id: 'hindi',
+    name: 'Hindi',
+    description: 'Language & Literature',
+    progress: 50,
+    icon: (
+      <svg className="mb-6" fill="none" height="32" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4h16v16H4z"></path>
+        <path d="M4 8h16"></path>
+        <path d="M8 4v16"></path>
+      </svg>
+    )
+  },
+  {
+    id: 'mathematics',
+    name: 'Mathematics',
+    description: 'Numbers & Equations',
+    progress: 70,
+    icon: (
+      <svg className="mb-6" fill="none" height="32" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4h16v16H4z"></path>
+        <path d="M4 12h16"></path>
+        <path d="M12 4v16"></path>
+      </svg>
+    )
+  },
+  {
+    id: 'socialscience',
+    name: 'Social Science',
+    description: 'History, Geography & Civics',
+    progress: 60,
+    icon: (
+      <svg className="mb-6" fill="none" height="32" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2v20M2 12h20"></path>
+        <path d="M4 4l16 16"></path>
+      </svg>
+    )
+  }
+];
+
+  const handleSubjectClick = (subjectId) => {
+    console.log(`Subject clicked: ${subjectId}`);
+    // Add your navigation or modal logic here
+  };
+
   return (
-    <div className="bg-white min-h-screen font-sans text-black">
-      <div className="layout-container flex h-full grow flex-col">
+    <div className="bg-white text-black min-h-screen flex flex-col">
+      {/* Main Header */}
         <SmartLearnAINavbar/>
-        {/* Page Content */}
-        <main className="flex-1 max-w-[1200px] mx-auto w-full px-6 lg:px-10 py-8">
-          {/* Breadcrumbs */}
-          <nav className="flex items-center gap-2 mb-6 text-sm">
-            <a className="text-gray-500 hover:text-black" href="#">Dashboard</a>
-            <span className="material-symbols-outlined text-xs text-gray-400">chevron_right</span>
-            <span className="text-black font-semibold">Syllabus Manager</span>
-          </nav>
 
-          {/* Page Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
-            <div>
-              <h1 className="text-4xl font-black text-black tracking-tight">Syllabus Manager</h1>
-              <p className="text-gray-500 mt-1">Organize and track curriculum progress across all subjects.</p>
-            </div>
-            <button className="flex items-center justify-center gap-2 bg-black text-white px-6 py-3 rounded-lg font-bold text-sm hover:opacity-90 transition-all shadow-sm active:scale-[0.98]">
-              <span className="material-symbols-outlined text-xl">add</span>
-              <span>Add New Syllabus</span>
-            </button>
-          </div>
-
-          {/* Subjects Accordion Section */}
-          <div className="flex flex-col gap-4">
-            {/* Subject 1: Physics */}
-            <details className="group bg-white border border-gray-300 rounded-lg overflow-hidden" open>
-              <summary className="flex cursor-pointer items-center justify-between p-5 hover:bg-gray-50 transition-colors list-none">
-                <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-black bg-gray-100 p-2 rounded-lg">rocket_launch</span>
-                  <div>
-                    <h3 className="text-xl font-black text-black uppercase tracking-tight">Physics</h3>
-                    <p className="text-xs text-gray-500 font-medium">12/24 TOPICS COMPLETED • GRADE 12</p>
-                  </div>
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto py-12 px-8 md:px-12 flex-1">
+        {/* Subject Grid Section */}
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {subjects.map((subject) => (
+            <article
+              key={subject.id}
+              onClick={() => handleSubjectClick(subject.id)}
+              className="subject-card group p-8 bg-white border border-gray-200 rounded-lg cursor-pointer flex flex-col justify-between h-64 hover:transform hover:-translate-y-1 hover:border-black transition-all duration-200"
+            >
+              <div>
+                {subject.icon}
+                <h2 className="text-xl font-bold">{subject.name}</h2>
+                <p className="text-sm text-gray-500 mt-1">{subject.description}</p>
+              </div>
+              
+              <div className="mt-auto">
+                <div className="flex justify-between items-end mb-2">
+                  <span className="text-sm font-medium">Progress</span>
+                  <span className="text-sm font-bold">{subject.progress}%</span>
                 </div>
-                <span className="material-symbols-outlined text-black group-open:rotate-180 transition-transform duration-300">expand_more</span>
-              </summary>
-              <div className="p-6 pt-2 border-t border-gray-200 flex flex-col gap-8">
-                {/* Chapter 1 */}
-                <div>
-                  <h4 className="text-sm font-bold text-black mb-4 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-black rounded-full"></span>
-                    Mechanics
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-4">
-                    <div className="flex items-start gap-3 group">
-                      <input 
-                        defaultChecked 
-                        className="custom-checkbox mt-0.5" 
-                        id="topic-1" 
-                        type="checkbox"
-                      />
-                      <label className="text-sm leading-tight cursor-pointer text-gray-700" htmlFor="topic-1">
-                        Kinematics: Motion in one dimension
-                      </label>
-                    </div>
-                    <div className="flex items-start gap-3 group">
-                      <input 
-                        defaultChecked 
-                        className="custom-checkbox mt-0.5" 
-                        id="topic-2" 
-                        type="checkbox"
-                      />
-                      <label className="text-sm leading-tight cursor-pointer text-gray-700" htmlFor="topic-2">
-                        Newton's Laws of Motion
-                      </label>
-                    </div>
-                    <div className="flex items-start gap-3 group">
-                      <input className="custom-checkbox mt-0.5" id="topic-3" type="checkbox"/>
-                      <label className="text-sm leading-tight cursor-pointer text-gray-700" htmlFor="topic-3">
-                        Work, Energy, and Power
-                      </label>
-                    </div>
-                    <div className="flex items-start gap-3 group">
-                      <input className="custom-checkbox mt-0.5" id="topic-4" type="checkbox"/>
-                      <label className="text-sm leading-tight cursor-pointer text-gray-700" htmlFor="topic-4">
-                        Rotational Dynamics
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Chapter 2 */}
-                <div>
-                  <h4 className="text-sm font-bold text-black mb-4 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-black rounded-full"></span>
-                    Thermodynamics
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-4">
-                    <div className="flex items-start gap-3 group">
-                      <input className="custom-checkbox mt-0.5" id="topic-5" type="checkbox"/>
-                      <label className="text-sm leading-tight cursor-pointer text-gray-700" htmlFor="topic-5">
-                        Laws of Thermodynamics
-                      </label>
-                    </div>
-                    <div className="flex items-start gap-3 group">
-                      <input className="custom-checkbox mt-0.5" id="topic-6" type="checkbox"/>
-                      <label className="text-sm leading-tight cursor-pointer text-gray-700" htmlFor="topic-6">
-                        Entropy and Heat Engines
-                      </label>
-                    </div>
-                  </div>
+                
+                {/* Progress Bar */}
+                <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-black transition-all duration-300" 
+                    style={{ width: `${subject.progress}%` }}
+                  ></div>
                 </div>
               </div>
-            </details>
+            </article>
+          ))}
+        </section>
+      </main>
 
-            {/* Subject 2: Chemistry */}
-            <details className="group bg-white border border-gray-300 rounded-lg overflow-hidden">
-              <summary className="flex cursor-pointer items-center justify-between p-5 hover:bg-gray-50 transition-colors list-none">
-                <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-black bg-gray-100 p-2 rounded-lg">science</span>
-                  <div>
-                    <h3 className="text-xl font-black text-black uppercase tracking-tight">Chemistry</h3>
-                    <p className="text-xs text-gray-500 font-medium">8/30 TOPICS COMPLETED • GRADE 12</p>
-                  </div>
-                </div>
-                <span className="material-symbols-outlined text-black group-open:rotate-180 transition-transform duration-300">expand_more</span>
-              </summary>
-              <div className="p-6 pt-2 border-t border-gray-200 flex flex-col gap-8">
-                <div>
-                  <h4 className="text-sm font-bold text-black mb-4 flex items-center gap-2">
-                    <span className="w-2 h-2 bg-black rounded-full"></span>
-                    Organic Chemistry
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pl-4">
-                    <div className="flex items-start gap-3">
-                      <input className="custom-checkbox mt-0.5" id="chem-1" type="checkbox"/>
-                      <label className="text-sm leading-tight cursor-pointer text-gray-700" htmlFor="chem-1">
-                        Hydrocarbons: Alkanes, Alkenes, Alkynes
-                      </label>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <input className="custom-checkbox mt-0.5" id="chem-2" type="checkbox"/>
-                      <label className="text-sm leading-tight cursor-pointer text-gray-700" htmlFor="chem-2">
-                        Aromatic Compounds
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </details>
+    
 
-            {/* Subject 3: Mathematics */}
-            <details className="group bg-white border border-gray-300 rounded-lg overflow-hidden">
-              <summary className="flex cursor-pointer items-center justify-between p-5 hover:bg-gray-50 transition-colors list-none">
-                <div className="flex items-center gap-4">
-                  <span className="material-symbols-outlined text-black bg-gray-100 p-2 rounded-lg">calculate</span>
-                  <div>
-                    <h3 className="text-xl font-black text-black uppercase tracking-tight">Mathematics</h3>
-                    <p className="text-xs text-gray-500 font-medium">18/20 TOPICS COMPLETED • GRADE 12</p>
-                  </div>
-                </div>
-                <span className="material-symbols-outlined text-black group-open:rotate-180 transition-transform duration-300">expand_more</span>
-              </summary>
-              <div className="p-6 pt-2 border-t border-gray-200">
-                <div className="bg-gray-50 rounded p-4 text-center border border-dashed border-gray-400">
-                  <p className="text-sm text-gray-500">Expand for details on Calculus and Algebra modules.</p>
-                </div>
-              </div>
-            </details>
-          </div>
-
-          {/* Syllabus Stats Summary */}
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="p-6 bg-white border border-gray-300 rounded-lg">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold text-gray-500 uppercase">Overall Progress</span>
-                <span className="material-symbols-outlined text-black">analytics</span>
-              </div>
-              <p className="text-3xl font-black">62%</p>
-              <div className="w-full bg-gray-200 h-2 mt-4 rounded-full overflow-hidden">
-                <div className="bg-black h-full" style={{ width: '62%' }}></div>
-              </div>
-            </div>
-            
-            <div className="p-6 bg-white border border-gray-300 rounded-lg">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold text-gray-500 uppercase">Total Subjects</span>
-                <span className="material-symbols-outlined text-black">auto_stories</span>
-              </div>
-              <p className="text-3xl font-black">08</p>
-              <p className="text-xs text-gray-500 mt-4">3 currently active in this semester</p>
-            </div>
-            
-            <div className="p-6 bg-white border border-gray-300 rounded-lg">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold text-gray-500 uppercase">Upcoming Exams</span>
-                <span className="material-symbols-outlined text-black">event</span>
-              </div>
-              <p className="text-3xl font-black">12</p>
-              <p className="text-xs text-gray-500 mt-4">Next: Physics Mechanics (Oct 12)</p>
-            </div>
-          </div>
-        </main>
-
-        {/* Footer */}
-        <footer className="border-t border-gray-300 py-8 px-6 lg:px-10 mt-12 bg-white">
-          <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2 opacity-60">
-              <span className="material-symbols-outlined text-sm">copyright</span>
-              <span className="text-xs font-medium">2024 SmartLearn AI. High-Fidelity Learning.</span>
-            </div>
-            <div className="flex gap-8">
-              <a className="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black transition-colors" href="#">Documentation</a>
-              <a className="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black transition-colors" href="#">Privacy</a>
-              <a className="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black transition-colors" href="#">Support</a>
-            </div>
-          </div>
-        </footer>
-      </div>
-
-      {/* Custom CSS for Checkbox */}
+      {/* Global Styles */}
       <style jsx>{`
-        .custom-checkbox {
-          appearance: none;
-          width: 1.25rem;
-          height: 1.25rem;
-          border: 1px solid #333333;
-          border-radius: 0.125rem;
-          background-color: white;
-          display: inline-grid;
-          place-content: center;
-          cursor: pointer;
-        }
-        .custom-checkbox::before {
-          content: "";
-          width: 0.65em;
-          height: 0.65em;
-          transform: scale(0);
-          transition: 120ms transform ease-in-out;
-          box-shadow: inset 1em 1em #333333;
-          clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-        }
-        .custom-checkbox:checked::before {
-          transform: scale(1);
-        }
-        .custom-checkbox:checked + label {
-          text-decoration: line-through;
-          color: #757575;
+        body {
+          font-family: 'Inter', sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
         }
       `}</style>
     </div>

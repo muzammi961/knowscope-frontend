@@ -399,7 +399,7 @@ const SmartLearnAIHome = () => {
       });
       console.log(response.data);
       setProfil(response.data);
-        if (!profiledata) {
+        if (!response.data) {
         console.log('.........................') 
         navigate('/StudentProfileSetup');
   }
@@ -426,11 +426,11 @@ const SmartLearnAIHome = () => {
             </div>
             <h2 className="text-xl font-black tracking-tighter uppercase">SmartLearn AI</h2>
           </div>
-          <div className="hidden md:flex items-center gap-10">
+          {/* <div className="hidden md:flex items-center gap-10">
             <a className="text-sm font-semibold hover:text-gray-600 transition-colors" href="#">Syllabus</a>
             <a className="text-sm font-semibold hover:text-gray-600 transition-colors" href="#">Test</a>
             <a className="text-sm font-semibold hover:text-gray-600 transition-colors" href="#">AI Mentor</a>
-          </div>
+          </div> */}
           <div className="flex items-center gap-4">
             {/* optional user menu can be added here */}
           </div>
@@ -453,9 +453,7 @@ const SmartLearnAIHome = () => {
             >
               Get Started
             </button>
-            <button className="w-full sm:w-auto border border-gray-300 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-colors">
-              Watch Demo
-            </button>
+           
           </div>
           {authError && (
             <p className="text-red-500 text-sm mt-4">{authError}</p>

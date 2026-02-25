@@ -119,16 +119,14 @@
 import React from 'react';
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from 'react-router-dom';
 const SmartLearnAINavbar = () => {
   let location = useLocation();
-  
+  let navigate=useNavigate()
   // Helper function to check if a link is active with better matching
   const isActive = (path) => {
     // For dashboard, do exact match
     if (path === '/DashboardOverview') {
-      return location.pathname === path;
-    }else if(path=='/AIMentorInteractionHub'){
       return location.pathname === path;
     }
     // For other routes, check if the current path starts with the link path
@@ -141,7 +139,7 @@ const SmartLearnAINavbar = () => {
       {/* Sticky Master Navbar (64px) */}
       <nav className="sticky top-0 z-50 h-16 w-full bg-white border-b border-black px-6 flex items-center justify-between">
         {/* Left: Branding */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div onClick={()=>navigate('/')} className="flex items-center gap-3 shrink-0">
           <div className="bg-black text-white p-1.5 rounded-lg flex items-center justify-center">
             <span className="material-symbols-outlined !text-[20px]">school</span>
           </div>
@@ -240,20 +238,6 @@ const SmartLearnAINavbar = () => {
             <span className="text-sm font-medium">Progress</span>
           </Link>
           
-          {/* AI Mentor Link */}
-          <Link 
-            to='/AIMentorInteractionHub' 
-            className={`nav-link-hover flex items-center gap-2 px-3 py-2 transition-colors ${
-              isActive('/AIMentorInteractionHub') 
-                ? 'text-black font-semibold' 
-                : 'text-gray-600 hover:text-black'
-            }`}
-          >
-            <span className="material-symbols-outlined" style={{ 
-              fontVariationSettings: isActive('/AIMentorInteractionHub') ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24" : "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24"
-            }}>smart_toy</span>
-            <span className="text-sm font-medium">AI Mentor</span>
-          </Link>
         </div>
 
         {/* Right: Actions & Profile */}

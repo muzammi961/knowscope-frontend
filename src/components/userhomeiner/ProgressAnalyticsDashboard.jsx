@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SmartLearnAINavbar from './navbarside/SmartLearnAINavbar'
 const ProgressAnalyticsDashboard = () => {
